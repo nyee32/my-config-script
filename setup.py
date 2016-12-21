@@ -58,6 +58,9 @@ def main ():
     setupEnv()
     installSpotify()
 
+    print "Setup is complete. You can now delete this directory\n"
+
+
 
 if __name__ == "__main__":
     main()
