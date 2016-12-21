@@ -5,8 +5,10 @@ import commands
 import sys
 
 UNDEF_STAT = 127
-ApplicationList = ['emacs', 'git', 'synaptic', 'rxvt', 'aterm']
-ENVCONFIG = "git clone https://github.com/nyee32/Linux_config.git ~/"
+ApplicationList = ['emacs', 'synaptic', 'rxvt', 'aterm', 'openssh-server',
+                   'openssh-client']
+ENVCONFIG = "git clone https://github.com/nyee32/Linux_config.git"
+CLEANUP = ['spotify.sh']
 
 
 def installApp (app):
@@ -25,27 +27,30 @@ def installApp (app):
 
 
 def execCommand (cmd):
-    exitStat = os.WEXITSTATUS(commands.getstatusoutput(cmd)[0])
-    if exitStat == UNDEF_STAT:
-        print "Command '%s' not found\n" % cmd
-    else:
-        print "Unknown exit status %d\n" % exitStat
+    os.system(cmd)
 
 
 # Clone config files from my github
 def setupEnv ():
-    execCommand (ENVCONFIG)
+    os.system(ENVCONFIG)
+    os.system("cp -r Linux_config/ ~/")
+    os.system("rm -fr Linux_config")
 
 def installSpotify():
     execCommand ('chmod 700 spotify.sh && spotify.sh')
 
-
+def cleanup():
+    for stuff in CLEANUP:
+        rmStr = 'rm %s' % stuff
+        execCommand(rmStr)
 
 
 
 def main ():
     # Update the OS first
-    exeCommand ('sudo apt-get update && sudo apt-get upgrade')
+    print "Updating OS. This will may take sometime\n"
+    os.system('sudo apt-get -y update && sudo apt-get -y upgrade')
+    print "update complete"
 
     for apps in ApplicationList:
         installApp (apps)
