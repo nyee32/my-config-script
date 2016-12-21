@@ -5,7 +5,8 @@ import commands
 import sys
 
 UNDEF_STAT = 127
-ApplicationList = ['emacs', 'synaptic', 'rxvt', 'aterm', 'openssh-server',
+ApplicationList = ['emacs24-lucid', 'synaptic', 'rxvt', 'aterm',
+                   'openssh-server',
                    'openssh-client']
 ENVCONFIG = "git clone https://github.com/nyee32/Linux_config.git"
 CLEANUP = ['spotify.sh']
