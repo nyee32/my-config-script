@@ -37,7 +37,7 @@ def setupEnv ():
     os.system("rm -fr Linux_config")
 
 def installSpotify():
-    execCommand ('chmod 700 spotify.sh && spotify.sh')
+    execCommand ('chmod 700 spotify.sh && ./spotify.sh')
 
 def cleanup():
     for stuff in CLEANUP:
