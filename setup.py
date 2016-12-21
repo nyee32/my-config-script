@@ -34,7 +34,7 @@ def execCommand (cmd):
 # Clone config files from my github
 def setupEnv ():
     os.system(ENVCONFIG)
-    os.system("cp -r Linux_config/ ~/")
+    os.system("cp -r Linux_config/, ~/")
     os.system("rm -fr Linux_config")
 
 def installSpotify():
